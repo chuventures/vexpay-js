@@ -1,0 +1,61 @@
+{
+  "name": "@vexpay/js",
+  "version": "0.1.0",
+  "description": "Embed the VEXPay checkout on your website \u2014 Pago M\u00f3vil C2P and cards, with payment details kept on VEXPay's origin.",
+  "license": "MIT",
+  "keywords": [
+    "vexpay",
+    "venezuela",
+    "payments",
+    "checkout",
+    "pago movil",
+    "embedded checkout"
+  ],
+  "homepage": "https://github.com/chuventures/vexpay-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuventures/vexpay-js.git"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/vexpay.global.js",
+  "jsdelivr": "./dist/vexpay.global.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
+  },
+  "scripts": {
+    "build": "tsup && node scripts/check-size.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "node e2e/embed.e2e.mjs"
+  },
+  "devDependencies": {
+    "happy-dom": "^18",
+    "playwright-core": "^1",
+    "tsup": "^8",
+    "typescript": "^5",
+    "vitest": "^3"
+  }
+}
