@@ -45,6 +45,8 @@ describe('checkout()', () => {
     expect(iframe.src).toBe(`${ORIGIN}/pay/cs-abc123def456?embed=1`);
     expect(iframe.getAttribute('sandbox')).toContain('allow-scripts');
     expect(iframe.getAttribute('sandbox')).not.toContain('allow-top-navigation ');
+    // USDT hands the buyer to the processor page in an unsandboxed popup.
+    expect(iframe.getAttribute('sandbox')).toContain('allow-popups-to-escape-sandbox');
     expect(iframe.title).toBe('VEXPay checkout');
   });
 

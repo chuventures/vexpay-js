@@ -1,6 +1,6 @@
 {
   "name": "@vexpay/js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Embed the VEXPay checkout on your website \u2014 Pago M\u00f3vil C2P and cards, with payment details kept on VEXPay's origin.",
   "license": "MIT",
   "keywords": [

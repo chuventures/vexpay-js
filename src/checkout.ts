@@ -85,9 +85,11 @@ export class Checkout {
     iframe.src = `${this.origin}/pay/${encodeURIComponent(this.slug)}?embed=1`;
     iframe.title = 'VEXPay checkout';
     iframe.allow = 'payment';
+    // allow-popups-to-escape-sandbox: USDT opens the processor's payment page in a new
+    // window, which must run as a normal page (not inherit this iframe's sandbox).
     iframe.setAttribute(
       'sandbox',
-      'allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation-by-user-activation',
+      'allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation',
     );
     iframe.style.cssText = 'width:100%;min-height:480px;border:0;display:block;background:transparent;';
     this.iframe = iframe;

@@ -88,6 +88,10 @@ redirectToCheckout({ clientSecret });
 
 Sends the buyer to the hosted checkout page. No `allowedOrigins` needed.
 
+## USDT
+
+When USDT is enabled on your VEXPay account, sessions can offer it (`methods: ['usdt']`, or the default of every method you accept). The buyer picks a network and sends USDT to the address shown; the embedded checkout keeps polling and emits `completed` once the transfer is confirmed, which can take a few minutes. Confirm on your server before fulfilling, and don't fulfil when the `payment.completed` webhook has `underpaid: true`.
+
 ## Options
 
 | Option | Default | |
