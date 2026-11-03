@@ -1,6 +1,6 @@
 # VEXPay.js
 
-Embed [VEXPay](https://vexwallet.co/vexpay)'s hosted checkout on your own website. Buyers pay with Pago Móvil C2P or card inside a VEXPay iframe; card numbers, bank codes and OTPs never touch your page — you only receive ids and status codes.
+Embed [VEXPay](https://vexpay.app)'s hosted checkout on your own website. Buyers pay with Pago Móvil C2P or card inside a VEXPay iframe; card numbers, bank codes and OTPs never touch your page — you only receive ids and status codes.
 
 - Zero dependencies, under 10 kB gzipped
 - ESM, CommonJS and a `<script>` build (`window.VexPay`)
@@ -92,13 +92,19 @@ Sends the buyer to the hosted checkout page. No `allowedOrigins` needed.
 
 When USDT is enabled on your VEXPay account, sessions can offer it (`methods: ['usdt']`, or the default of every method you accept). The buyer picks a network and sends USDT to the address shown; the embedded checkout keeps polling and emits `completed` once the transfer is confirmed, which can take a few minutes. Confirm on your server before fulfilling, and don't fulfil when the `payment.completed` webhook has `underpaid: true`.
 
+## Testing card payments
+
+Checkouts created with a test API key show a "Tarjetas de prueba" list in the card form. Picking a card fills the form, and each card returns a fixed outcome (approval, a bank decline, a chargeback) without charging anything. Full list: [test cards](https://docs.vexpay.app/vpos#test-card).
+
 ## Options
 
 | Option | Default | |
 |---|---|---|
 | `clientSecret` | — | From `POST /v1/checkout/sessions`. Required. |
-| `checkoutOrigin` | `https://pay.vexwallet.co` | Where the hosted checkout lives. |
+| `checkoutOrigin` | `https://pay.vexpay.app` | Where the hosted checkout lives. |
 | `readyTimeoutMs` | `15000` | How long to wait for the checkout to load before emitting `error` with `origin_not_allowed`. |
+
+Before 0.3.0 the default `checkoutOrigin` was `https://pay.vexwallet.co`. That host keeps serving embedded checkouts, so passing `checkoutOrigin: 'https://pay.vexwallet.co'` explicitly still works.
 
 ## Troubleshooting
 

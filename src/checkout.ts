@@ -1,4 +1,4 @@
-export const DEFAULT_CHECKOUT_ORIGIN = 'https://pay.vexwallet.co';
+export const DEFAULT_CHECKOUT_ORIGIN = 'https://pay.vexpay.app';
 const DEFAULT_READY_TIMEOUT_MS = 15_000;
 const PREFIX = 'vexpay:';
 const SECRET_PATTERN = /^([a-z0-9-]+)_secret_[A-Za-z0-9_-]{20,}$/;
@@ -6,7 +6,7 @@ const SECRET_PATTERN = /^([a-z0-9-]+)_secret_[A-Za-z0-9_-]{20,}$/;
 export interface CheckoutOptions {
   /** `clientSecret` from `POST /v1/checkout/sessions` (created on your server). */
   clientSecret: string;
-  /** Where the hosted checkout lives. Default `https://pay.vexwallet.co`. */
+  /** Where the hosted checkout lives. Default `https://pay.vexpay.app`. */
   checkoutOrigin?: string;
   /** How long to wait for the checkout to load before emitting `origin_not_allowed`. Default 15 s. */
   readyTimeoutMs?: number;

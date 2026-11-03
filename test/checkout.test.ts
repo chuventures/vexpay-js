@@ -172,7 +172,7 @@ describe('redirectToCheckout()', () => {
     Object.defineProperty(window, 'location', { value: { ...original, assign }, configurable: true });
     try {
       redirectToCheckout({ clientSecret: SECRET });
-      expect(assign).toHaveBeenCalledWith('https://pay.vexwallet.co/pay/cs-abc123def456');
+      expect(assign).toHaveBeenCalledWith('https://pay.vexpay.app/pay/cs-abc123def456');
     } finally {
       Object.defineProperty(window, 'location', { value: original, configurable: true });
     }
